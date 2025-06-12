@@ -1,14 +1,15 @@
+import config from "@/config";
 import { Box, Text, Flex, Image, Wrap, WrapItem } from "@chakra-ui/react";
 
 const skills = [
-  { name: "TypeScript", icon: "/icons/typescript.svg" },
-  { name: "React", icon: "/icons/react.svg" },
-  { name: "Node.js", icon: "/icons/nodejs.svg" },
-  { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
-  { name: "Next.js", icon: "/icons/nextjs.svg" },
-  { name: "Chakra UI", icon: "/icons/chakra.svg" },
-  { name: "Tailwind CSS", icon: "/icons/tailwind.svg" },
-  { name: "Docker", icon: "/icons/docker.svg" },
+  { name: "TypeScript", icon: `${config.basePath}/icons/typescript.svg` },
+  { name: "React", icon: `${config.basePath}/icons/react.svg` },
+  { name: "Node.js", icon: `${config.basePath}: "/icons/nodejs.svg` },
+  { name: "PostgreSQL", icon: `${config.basePath}/icons/postgresql.svg` },
+  { name: "Next.js", icon: `${config.basePath}: "/icons/nextjs.svg` },
+  { name: "Chakra UI", icon: `${config.basePath}: "/icons/chakra.svg` },
+  { name: "Tailwind CSS", icon: `${config.basePath}: "/icons/tailwind.svg` },
+  { name: "Docker", icon: `${config.basePath}/icons/docker.svg` },
 ];
 
 export default function SkillsList() {

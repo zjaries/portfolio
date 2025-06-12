@@ -4,6 +4,7 @@ import { About } from "@/components/About/About";
 import { Projects } from "@/components/Projects/Projects";
 import { Hero } from "@/components/Hero/Hero";
 import { Contact } from "@/components/Contact/Contact";
+import config from "@/config";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
           <a href="#about">
             <Image
               aria-hidden
-              src="/about.svg"
+              src={`${config.basePath}/about.svg`}
               alt="About"
               width={18}
               height={18}
@@ -24,7 +25,7 @@ export default function Home() {
           <a href="#projects">
             <Image
               aria-hidden
-              src="/project.svg"
+              src={`${config.basePath}/project.svg`}
               alt="Projects"
               width={18}
               height={18}
@@ -34,7 +35,7 @@ export default function Home() {
           <a href="#contact">
             <Image
               aria-hidden
-              src="/contact.svg"
+              src={`${config.basePath}/contact.svg`}
               alt="Contact"
               width={18}
               height={18}

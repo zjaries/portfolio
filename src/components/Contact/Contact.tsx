@@ -1,3 +1,4 @@
+import config from "@/config";
 import { Box, Heading, Text, HStack } from "@chakra-ui/react";
 import Image from "next/image";
 
@@ -32,7 +33,7 @@ export function Contact() {
           }}
         >
           <Image
-            src="/email.svg"
+            src={`${config.basePath}/email.svg`}
             alt="Email"
             width={18}
             height={18}
