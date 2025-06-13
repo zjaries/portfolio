@@ -1,19 +1,20 @@
-.tag {
+.button {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 1.5rem;
+  padding: 0.6rem 2rem;
   border-radius: 999px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   color: white;
   background: var(--background);
   position: relative;
-  overflow: hidden;
   backdrop-filter: blur(6px);
   z-index: 0;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.tag::before {
+.button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -35,4 +36,9 @@
   100% {
     background-position: 150% 50%;
   }
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 10px #8a2be2;
 }

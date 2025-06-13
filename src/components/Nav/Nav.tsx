@@ -6,6 +6,8 @@ import styles from "./Nav.module.css";
 import IconCommandLine from "../Icons/IconCommandLine";
 import IconMenu from "../Icons/IconMenu";
 import clsx from "clsx";
+import config from "@/config";
+import Image from "next/image";
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +32,13 @@ export function Nav() {
         [styles.open]: isOpen,
       })}
     >
+      <Image
+        src={`${config.basePath}/images/logo.png`}
+        alt="Z"
+        width={726}
+        height={721}
+        className={styles.logo}
+      />
       <button
         aria-label="Toggle Menu"
         className={styles.menuButton}

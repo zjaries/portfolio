@@ -1,9 +1,18 @@
+.logo {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  filter: brightness(0) invert(1);
+  width: 32px;
+}
+
 .menuButton {
   padding: 1rem;
 }
 
 .navWrapper {
   position: absolute;
+  width: 100%;
   top: 0;
   right: 0;
   z-index: 1;
@@ -50,7 +59,7 @@
 @media (min-width: 768px) {
   .navWrapper {
     background: none;
-    width: 100%;
+
     height: auto;
   }
 
@@ -64,5 +73,11 @@
     position: absolute;
     background: transparent;
     justify-content: flex-end;
+  }
+
+  .logo {
+    top: 2rem;
+    left: 2rem;
+    width: 42px;
   }
 }
