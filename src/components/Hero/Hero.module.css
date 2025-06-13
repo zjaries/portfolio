@@ -20,7 +20,7 @@
       rgba(100, 130, 255, 0.02),
       transparent 30%
     ),
-    linear-gradient(to bottom, #090f1f, #050a15);
+    linear-gradient(to bottom, #090f1f, var(--background));
 }
 
 .heroContent {

@@ -1,48 +1,18 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import { About } from "@/components/About/About";
 import { Projects } from "@/components/Projects/Projects";
 import { Hero } from "@/components/Hero/Hero";
 import { Contact } from "@/components/Contact/Contact";
-import config from "@/config";
+import Carousel from "@/components/Carousel/Carousel";
+import { Nav } from "@/components/Nav/Nav";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
+        <Nav />
         <Hero />
-        <nav className={styles.nav}>
-          <a href="#about">
-            <Image
-              aria-hidden
-              src={`${config.basePath}/about.svg`}
-              alt="About"
-              width={18}
-              height={18}
-            />
-            About
-          </a>
-          <a href="#projects">
-            <Image
-              aria-hidden
-              src={`${config.basePath}/project.svg`}
-              alt="Projects"
-              width={18}
-              height={18}
-            />
-            Projects
-          </a>
-          <a href="#contact">
-            <Image
-              aria-hidden
-              src={`${config.basePath}/contact.svg`}
-              alt="Contact"
-              width={18}
-              height={18}
-            />
-            Contact
-          </a>
-        </nav>
+        <Carousel />
       </header>
       <main className={styles.main}>
         <About />

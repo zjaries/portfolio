@@ -1,0 +1,68 @@
+.menuButton {
+  padding: 1rem;
+}
+
+.navWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.navWrapper.open {
+  background: var(--background);
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav {
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  z-index: 1;
+  right: 0;
+  top: 0;
+
+  width: 100%;
+}
+
+.navOpen {
+  display: flex;
+}
+
+.navLink {
+  opacity: 0.85;
+  transition: opacity 0.3s ease-out;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navSubtitle {
+  opacity: 0.65;
+}
+
+.navTitle {
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .navWrapper {
+    background: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    background: transparent;
+    justify-content: flex-end;
+  }
+}

@@ -3,7 +3,6 @@
 import { Box, Heading, Text, Stack, Icon } from "@chakra-ui/react";
 import { FiUser } from "react-icons/fi";
 import { useColorModeValue } from "../color-mode";
-import SkillsList from "./SkillsList";
 
 export function About() {
   const accent = useColorModeValue("#7453b7", "#9c7cdb");
@@ -43,8 +42,6 @@ export function About() {
           impact at scale.
         </Text>
       </Stack>
-
-      <SkillsList />
     </Box>
   );
 }
