@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-
-import { Outfit } from "next/font/google";
+import { Open_Sans } from "next/font/google";
+import { Fira_Code } from "next/font/google";
 import { Provider } from "@/components/provider";
 import "./globals.css";
 import { DarkMode } from "@/components/color-mode";
 
-const inter = Outfit({
-  variable: "--font-sans",
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable}`}>
+      <body className={`${firaCode.variable} ${openSans.variable}`}>
         <Provider>
           <DarkMode>{children}</DarkMode>
         </Provider>

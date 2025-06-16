@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
 import AnimatedLines from "../AnimatedLines/AnimatedLines";
 import StarField from "../StarField/StarField";
 import Tag from "../Tag/Tag";
@@ -11,9 +11,9 @@ export function Hero() {
       <StarField direction="counterclockwise" />
       <AnimatedLines />
       <div className={styles.heroContent}>
-        <Text textAlign="center" className={styles.h1}>
+        <Heading as="h1" textAlign="center" className={styles.h1}>
           Zach Aries
-        </Text>
+        </Heading>
         <Text
           textStyle="md"
           textAlign="center"
@@ -24,7 +24,7 @@ export function Hero() {
           AI-driven platforms using React, TypeScript, and cloud infrastructure.
         </Text>
         <Tag>
-          <Text textStyle="xl" textAlign="center">
+          <Text fontSize="md" textAlign="center">
             Full Stack Engineer
           </Text>
         </Tag>
