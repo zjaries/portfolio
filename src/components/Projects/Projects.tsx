@@ -54,7 +54,7 @@ export function Projects() {
       <Heading size="5xl" mb={10}>
         Projects
       </Heading>
-      <Stack gap={8}>
+      <Stack gap={16}>
         {projects.map((project, idx) => (
           <Article
             key={project.slug}

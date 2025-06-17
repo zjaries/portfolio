@@ -24,7 +24,7 @@ export function Hero() {
           AI-driven platforms using React, TypeScript, and cloud infrastructure.
         </Text>
         <Tag>
-          <Text fontSize="md" textAlign="center">
+          <Text fontSize="md" textAlign="center" m={0}>
             Full Stack Engineer
           </Text>
         </Tag>

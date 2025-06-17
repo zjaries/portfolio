@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export default function IconContact(props: SVGProps<SVGSVGElement>) {
+export default function IconEmail(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,11 +14,8 @@ export default function IconContact(props: SVGProps<SVGSVGElement>) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M16 2v2" />
-      <path d="M7 22v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" />
-      <path d="M8 2v2" />
-      <circle cx="12" cy="11" r="3" />
-      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+      <rect x="2" y="4" width="20" height="16" rx="2" />
     </svg>
   );
 }

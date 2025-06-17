@@ -1,0 +1,121 @@
+import { notFound } from "next/navigation";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import { Nav } from "@/components/Nav/Nav";
+import { Box, Container, Heading, Image } from "@chakra-ui/react";
+import IconCommandLine from "@/components/Icons/IconCommandLine";
+import styles from "./page.module.css";
+import "./projects.css";
+import Carousel from "@/components/Carousel/Carousel";
+import PageContent from "@/components/PageContent/PageContent";
+import { iconMap } from "@/utils/iconMap";
+import config from "@/config";
+import remarkRehype from "remark-rehype";
+import rehypeRaw from "rehype-raw";
+import rehypeStringify from "rehype-stringify";
+
+const projectsDir = path.join(process.cwd(), "src/content/projects");
+
+async function getProjectBySlug(slug: string) {
+  const filePath = path.join(projectsDir, `${slug}.md`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+
+  const { data, content } = matter(fileContents);
+
+  const processedContent = await remark()
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeStringify)
+    .process(content);
+
+  const contentHtml = processedContent.toString();
+
+  return {
+    slug,
+    metadata: data,
+    contentHtml,
+  };
+}
+
+function getAllProjectSlugs() {
+  return fs.readdirSync(projectsDir).map((file) => ({
+    slug: file.replace(/\.md$/, ""),
+  }));
+}
+
+export async function generateStaticParams() {
+  return getAllProjectSlugs();
+}
+
+const links = [
+  {
+    href: "/#about",
+    title: "About Me",
+    subtitle: "Full Stack Engineer",
+  },
+  {
+    href: "/#projects",
+    title: "Projects",
+    icon: <IconCommandLine height={14} />,
+  },
+  {
+    href: "/#contact",
+    title: "Contact",
+  },
+];
+
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+  if (!project) {
+    return notFound();
+  }
+
+  const { contentHtml } = project;
+  const { image, video, stack } = project.metadata;
+
+  const techStack = stack.map((item: { title: string; href: string }) => ({
+    title: item.title,
+    icon: iconMap[item.title] || null,
+    href: item.href || "#",
+  }));
+
+  console.log("config: ", config.basePath);
+
+  return (
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <Nav links={links} />
+        <Container as="section" maxW="7xl" mx="auto" mb="8" position="relative">
+          <Heading mb="8">{project.metadata.title}</Heading>
+          {video && (
+            <video className={styles.video} autoPlay loop muted preload="none">
+              <source src={`${config.basePath}/${video}`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
+          {image && (
+            <Image
+              src={`${config.basePath}/${image}`}
+              alt={project.metadata.title}
+              className={styles.image}
+              width="100%"
+            />
+          )}
+          <Box mt="12">
+            <Carousel items={techStack} />
+          </Box>
+        </Container>
+      </header>
+      <main className={styles.main}>
+        <PageContent content={contentHtml} />
+      </main>
+    </div>
+  );
+}

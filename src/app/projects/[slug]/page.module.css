@@ -1,0 +1,35 @@
+.h1 {
+  font-size: 124px;
+  line-height: 1.2;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background);
+  padding-top: 106px;
+}
+
+.header {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding: 32px;
+    align-items: center;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.video {
+  width: 100%;
+}

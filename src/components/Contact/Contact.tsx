@@ -1,6 +1,6 @@
-import config from "@/config";
 import { Box, Heading, Text, HStack } from "@chakra-ui/react";
-import Image from "next/image";
+
+import IconEmail from "../Icons/IconEmail";
 
 export function Contact() {
   return (
@@ -13,10 +13,10 @@ export function Contact() {
       mx="auto"
       textAlign="center"
     >
-      <Heading size="xl" mb={4}>
+      <Heading size="5xl" mb={4}>
         Get in Touch
       </Heading>
-      <Text fontSize="md" mb={10} color="gray.400">
+      <Text fontSize="md" mb={10} color="gray.300">
         Feel free to reach out — I&apos;m always happy to connect.
       </Text>
       <HStack justify="center" gap={4}>
@@ -26,19 +26,12 @@ export function Contact() {
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
-            color: "#6a4dad",
             fontWeight: 500,
             fontSize: "1rem",
             textDecoration: "none",
           }}
         >
-          <Image
-            src={`${config.basePath}/email.svg`}
-            alt="Email"
-            width={18}
-            height={18}
-            aria-hidden
-          />
+          <IconEmail width={16} height={16} />
           zach.j.aries@gmail.com
         </a>
         <Text>|</Text>
@@ -50,7 +43,6 @@ export function Contact() {
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
-            color: "#6a4dad",
             fontWeight: 500,
             fontSize: "1rem",
             textDecoration: "none",

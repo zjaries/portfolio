@@ -3,22 +3,28 @@
 import { useEffect, useState } from "react";
 import { Box, Text, VStack } from "@chakra-ui/react";
 import styles from "./Nav.module.css";
-import IconCommandLine from "../Icons/IconCommandLine";
 import IconMenu from "../Icons/IconMenu";
 import clsx from "clsx";
 import config from "@/config";
 import Image from "next/image";
 
-export function Nav() {
+interface NavLink {
+  href: string;
+  title: string;
+  subtitle?: string;
+  icon?: React.ReactNode;
+}
+
+interface NavProps {
+  links: NavLink[];
+  back?: boolean;
+}
+
+export function Nav({ links }: NavProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -39,6 +45,7 @@ export function Nav() {
         height={721}
         className={styles.logo}
       />
+
       <button
         aria-label="Toggle Menu"
         className={styles.menuButton}
@@ -52,39 +59,26 @@ export function Nav() {
           [styles.navOpen]: isOpen,
         })}
       >
-        <a
-          href="#about"
-          className={styles.navLink}
-          onClick={() => setIsOpen(false)}
-        >
-          <Text fontSize="xs" className={styles.navSubtitle}>
-            Full Stack Engineer
-          </Text>
-          <Text className={styles.navTitle}>About Me</Text>
-        </a>
-        <a
-          href="#projects"
-          className={styles.navLink}
-          onClick={() => setIsOpen(false)}
-        >
-          <Box
-            className={styles.navSubtitle}
-            display="flex"
-            alignItems="center"
-            height={18}
+        {links.map(({ href, title, subtitle, icon }) => (
+          <a
+            key={href}
+            href={href}
+            className={styles.navLink}
+            onClick={() => setIsOpen(false)}
           >
-            <IconCommandLine height={14} />
-          </Box>
-          <Text className={styles.navTitle}>Projects</Text>
-        </a>
-        <a
-          href="#contact"
-          className={styles.navLink}
-          onClick={() => setIsOpen(false)}
-        >
-          <Box className={styles.navSubtitle} height={18}></Box>
-          <Text className={styles.navTitle}>Contact</Text>
-        </a>
+            <Box
+              className={styles.navSubtitle}
+              display="flex"
+              alignItems="center"
+              height={18}
+            >
+              {icon ?? subtitle}
+            </Box>
+            <Text as="span" className={styles.navTitle}>
+              {title}
+            </Text>
+          </a>
+        ))}
       </Box>
     </VStack>
   );
