@@ -43,6 +43,8 @@ We leveraged:
 - **Google Cloud Pub/Sub** and **Cloud Run** for event-driven workloads
 - **Redis** for caching intermediate results and request de-duplication
 - **Firebase Auth** to securely associate document processing with vendor identity
+- **OpenAI** to interpret and classify complex documents, extract data where consistent, and communication in verification workflows
+- **Google Document AI** to extract structured fields from documents where OpenAI was inconsistent
 
 <iframe  width="100%" height="450" src="https://embed.figma.com/board/jyaECb9bedjCEaleBA6mCK/Wreno-OpenAPI?node-id=0-1&embed-host=share" allowFullScreen></iframe>
 
