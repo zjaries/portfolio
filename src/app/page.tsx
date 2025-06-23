@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Nav links={links} />;
+        <Nav links={links} />
         <Hero />
         <Carousel items={items} />
       </header>

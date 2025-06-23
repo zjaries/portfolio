@@ -13,7 +13,7 @@ export default function Content(props: { content: string }) {
   }, []);
 
   return (
-    <Container id="page-content" as="section" maxW="5xl" mx="auto" px="8">
+    <Container id="page-content" as="section" maxW="5xl" mx="auto">
       <Box
         id="about"
         mb="16"

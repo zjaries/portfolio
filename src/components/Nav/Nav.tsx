@@ -7,6 +7,7 @@ import IconMenu from "../Icons/IconMenu";
 import clsx from "clsx";
 import config from "@/config";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NavLink {
   href: string;
@@ -38,14 +39,15 @@ export function Nav({ links }: NavProps) {
         [styles.open]: isOpen,
       })}
     >
-      <Image
-        src={`${config.basePath}/images/logo.png`}
-        alt="Z"
-        width={726}
-        height={721}
-        className={styles.logo}
-      />
-
+      <Link href="/">
+        <Image
+          src={`${config.basePath}/images/logo.png`}
+          alt="Z"
+          width={726}
+          height={721}
+          className={styles.logo}
+        />
+      </Link>
       <button
         aria-label="Toggle Menu"
         className={styles.menuButton}

@@ -1,38 +1,54 @@
 .article {
   position: relative;
-}
-
-.article .articleImage {
-  transition: transform 0.2s ease-in-out;
+  background: #000;
 }
 
 .articleOverview {
-  width: 280px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  background: rgba(5, 10, 21, 0.5);
-  backdrop-filter: blur(10px);
-  transition: width 0.2s ease-in-out 0.2s;
+  width: auto;
 }
 
-.articleDescription {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  max-height: 125px;
-}
 
-article.article.hovered .articleImage {
-  transform: scale(1.02);
-}
 
-.article.hovered .articleOverview {
-  width: 75%;
-  transition: width 0.2s ease-in-out;
-}
+@media screen and (min-width: 768px) {
+  .article .articleImage {
+    transition: transform 0.2s ease-in-out;
+  }
 
-.article.hovered .articleDescription {
-  opacity: 1;
-  transition: opacity 0.2s 0.2s ease-in-out;
-  overflow: hidden;
+  .articleOverview {
+    width: 280px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(5, 10, 21, 0.5);
+    backdrop-filter: blur(10px);
+    transition: width 0.2s ease-in-out 0.2s;
+  }
+
+  .articleDescription {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    max-height: 115px;
+  }
+
+  article.article.hovered .articleImage {
+    transform: scale(1.02);
+  }
+
+  .article.hovered .articleOverview {
+    width: 75%;
+    transition: width 0.2s ease-in-out;
+  }
+
+  .article.hovered .articleDescription {
+    opacity: 1;
+    transition: opacity 0.2s 0.2s ease-in-out;
+    overflow: hidden;
+  }
+
+  .techStack {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 1.2rem;
+  }
 }

@@ -24,9 +24,73 @@ body {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-fira-code);
+  margin-top: var(--chakra-spacing-2);
+  margin-bottom: var(--chakra-spacing-4);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--chakra-font-sizes-4xl);
+}
+
+h3 {
+  font-size: var(--chakra-font-sizes-xl);
+}
+
+p {
+  margin-bottom: var(--chakra-spacing-2);
+  color: #c0c0c0;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+hr {
+  margin-top: var(--chakra-spacing-8);
+  margin-bottom: var(--chakra-spacing-8);
+}
+
+ul,
+ol {
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+  line-height: 1.6;
+  color: var(--text-color, #f1f1f1); /* customizable */
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  position: relative;
+}
+
+ul li::marker,
+ol li::marker {
+  color: var(--accent-color, #f1f1f1); /* soft purple */
+}
+
+#page-content img,
+#page-content iframe {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 6px;
 }
 
 @media (prefers-color-scheme: dark) {

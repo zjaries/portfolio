@@ -25,14 +25,14 @@ const projects = [
       "An AI-powered document processing platform that automatically classifies, extracts, and verifies compliance documents like W9s, COIs, and trade licenses. It uses a flexible processing pipeline that sends data through webhooks in real time and supports plugging in any AI model for document parsing and verification.",
     stack: "TypeScript, Node.js, Hono, React, PostgreSQL, GCP",
   },
-  {
-    title: "Wreno Vendor Management Platform",
-    slug: "vendor-management",
-    image: `${config.basePath}/images/projects/vendor-management-thumbnail.png`,
-    description:
-      "A full-featured platform for managing vendor compliance at scale, enabling companies to track credential status, set custom requirements, and automate document workflows. The system streamlines onboarding and reduces compliance risk by surfacing real-time status, auditability, and AI-driven verification across vendors and projects.",
-    stack: "TypeScript, Node.js, Express, React, NextJS, PostgreSQL, GCP",
-  },
+  // {
+  //   title: "Wreno Vendor Management Platform",
+  //   slug: "vendor-management",
+  //   image: `${config.basePath}/images/projects/vendor-management-thumbnail.png`,
+  //   description:
+  //     "A full-featured platform for managing vendor compliance at scale, enabling companies to track credential status, set custom requirements, and automate document workflows. The system streamlines onboarding and reduces compliance risk by surfacing real-time status, auditability, and AI-driven verification across vendors and projects.",
+  //   stack: "TypeScript, Node.js, Express, React, NextJS, PostgreSQL, GCP",
+  // },
   // {
   //   title: "Creative Studio",
   //   slug: "creative-studio",
@@ -50,7 +50,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <Box as="section" id="projects" py={24} px={6} maxW="4xl" mx="auto">
+    <Box as="section" id="projects" py={{ base: 0, md: 24}} px={6} maxW="4xl" mx="auto">
       <Heading size="5xl" mb={10}>
         Projects
       </Heading>
@@ -119,7 +119,7 @@ function Article(props: ArticleProps) {
             py={7}
           >
             <Box>
-              <Heading size="lg" mb={2} maxW="200px">
+              <Heading as="h3" size="sm" mb={2} maxW="200px">
                 {title}
               </Heading>
               <Text fontSize="sm" className={styles.articleDescription}>
@@ -133,13 +133,10 @@ function Article(props: ArticleProps) {
                     Tech Stack
                   </Heading>
                   <Text
+                    className={styles.techStack}
                     fontSize="sm"
                     color="gray.300"
                     mb={4}
-                    overflow="hidden"
-                    textOverflow="ellipsis"
-                    whiteSpace="nowrap"
-                    maxHeight="1.2rem"
                   >
                     {stack}
                   </Text>

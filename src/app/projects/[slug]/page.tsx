@@ -7,7 +7,6 @@ import { Nav } from "@/components/Nav/Nav";
 import { Box, Container, Heading, Image } from "@chakra-ui/react";
 import IconCommandLine from "@/components/Icons/IconCommandLine";
 import styles from "./page.module.css";
-import "./projects.css";
 import Carousel from "@/components/Carousel/Carousel";
 import PageContent from "@/components/PageContent/PageContent";
 import { iconMap } from "@/utils/iconMap";
@@ -86,14 +85,12 @@ export default async function ProjectsPage({
     href: item.href || "#",
   }));
 
-  console.log("config: ", config.basePath);
-
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <Nav links={links} />
         <Container as="section" maxW="7xl" mx="auto" mb="8" position="relative">
-          <Heading mb="8">{project.metadata.title}</Heading>
+          <Heading mb="8" mx="auto" lineHeight={1.2} px="2rem" maxWidth="5xl">{project.metadata.title}</Heading>
           {video && (
             <video className={styles.video} autoPlay loop muted preload="none">
               <source src={`${config.basePath}/${video}`} type="video/mp4" />

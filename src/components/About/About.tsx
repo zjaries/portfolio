@@ -1,5 +1,5 @@
 import config from "@/config";
-import { Box, Heading, Text, HStack } from "@chakra-ui/react";
+import { Box, Heading, Text, Stack } from "@chakra-ui/react";
 import Image from "next/image";
 import styles from "./About.module.css";
 import IconArrowDownRight from "../Icons/IconArrowDownRight";
@@ -13,6 +13,7 @@ export function About() {
       my="7rem"
       maxW="6xl"
       mx="auto"
+      px="1.5rem"
       textAlign="left"
       position="relative"
     >
@@ -28,7 +29,7 @@ export function About() {
         />
       </Heading>
 
-      <HStack gap={10} alignItems="flex-start">
+      <Stack gap={10} alignItems="flex-start" direction={{ base: "column", md: "row" }} >
         <Image
           src={`${config.basePath}/about-me-01.png`}
           alt="Zach Aries"
@@ -76,7 +77,7 @@ export function About() {
             />
           </Button>
         </Box>
-      </HStack>
+      </Stack>
     </Box>
   );
 }

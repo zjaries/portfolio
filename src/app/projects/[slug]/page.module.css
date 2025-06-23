@@ -17,17 +17,9 @@
   width: 100%;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 32px;
-    align-items: center;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
+.main {
+  padding: 1.5rem;
+  align-items: center;
 }
 
 .video {
