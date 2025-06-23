@@ -53,7 +53,9 @@ export async function getProjectBySlug(slug: string) {
 export async function getAllProjectSlugs() {
   const dir = await readdir(projectsDir);
 
-  return dir.map((file) => ({
-    slug: file.replace(/\.md$/, ""),
-  }));
+  return dir
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => ({
+      slug: file.replace(/\.md$/, ""),
+    }));
 }
