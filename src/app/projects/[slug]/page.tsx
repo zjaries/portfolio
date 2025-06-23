@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
-import { Nav } from "@/components/Nav/Nav";
 import { Box, Container, Heading, Image } from "@chakra-ui/react";
+import { Nav } from "@/components/Nav/Nav";
 import IconCommandLine from "@/components/Icons/IconCommandLine";
-import styles from "./page.module.css";
 import {
   getAllProjectSlugs,
   getProjectBySlug,
@@ -11,6 +10,7 @@ import Carousel from "@/components/Carousel/Carousel";
 import PageContent from "@/components/PageContent/PageContent";
 import { iconMap } from "@/utils/iconMap";
 import config from "@/config";
+import styles from "./page.module.css";
 
 export async function generateStaticParams() {
   return getAllProjectSlugs();
@@ -53,6 +53,28 @@ export default async function ProjectsPage({
     href: item.href || "#",
   }));
 
+  const renderHeroAsset = () => {
+    if (video) {
+      return (
+        <video className={styles.video} autoPlay loop muted preload="none">
+          <source src={`${config.basePath}/${video}`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+    if (image) {
+      return (
+        <Image
+          src={`${config.basePath}/${image}`}
+          alt={project.metadata.title}
+          className={styles.image}
+          width="100%"
+        />
+      );
+    }
+    return null;
+  };
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -61,20 +83,7 @@ export default async function ProjectsPage({
           <Heading mb="8" mx="auto" lineHeight={1.2} px="2rem" maxWidth="5xl">
             {project.metadata.title}
           </Heading>
-          {video && (
-            <video className={styles.video} autoPlay loop muted preload="none">
-              <source src={`${config.basePath}/${video}`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
-          {image && (
-            <Image
-              src={`${config.basePath}/${image}`}
-              alt={project.metadata.title}
-              className={styles.image}
-              width="100%"
-            />
-          )}
+          {renderHeroAsset()}
           <Box mt="12">
             <Carousel items={techStack} />
           </Box>
