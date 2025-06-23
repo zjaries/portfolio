@@ -1,48 +1,16 @@
 import { notFound } from "next/navigation";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
 import { Nav } from "@/components/Nav/Nav";
 import { Box, Container, Heading, Image } from "@chakra-ui/react";
 import IconCommandLine from "@/components/Icons/IconCommandLine";
 import styles from "./page.module.css";
+import {
+  getAllProjectSlugs,
+  getProjectBySlug,
+} from "@/content/projects/getProjects";
 import Carousel from "@/components/Carousel/Carousel";
 import PageContent from "@/components/PageContent/PageContent";
 import { iconMap } from "@/utils/iconMap";
 import config from "@/config";
-import remarkRehype from "remark-rehype";
-import rehypeRaw from "rehype-raw";
-import rehypeStringify from "rehype-stringify";
-
-const projectsDir = path.join(process.cwd(), "src/content/projects");
-
-async function getProjectBySlug(slug: string) {
-  const filePath = path.join(projectsDir, `${slug}.md`);
-  const fileContents = fs.readFileSync(filePath, "utf8");
-
-  const { data, content } = matter(fileContents);
-
-  const processedContent = await remark()
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeStringify)
-    .process(content);
-
-  const contentHtml = processedContent.toString();
-
-  return {
-    slug,
-    metadata: data,
-    contentHtml,
-  };
-}
-
-function getAllProjectSlugs() {
-  return fs.readdirSync(projectsDir).map((file) => ({
-    slug: file.replace(/\.md$/, ""),
-  }));
-}
 
 export async function generateStaticParams() {
   return getAllProjectSlugs();
@@ -90,7 +58,9 @@ export default async function ProjectsPage({
       <header className={styles.header}>
         <Nav links={links} />
         <Container as="section" maxW="7xl" mx="auto" mb="8" position="relative">
-          <Heading mb="8" mx="auto" lineHeight={1.2} px="2rem" maxWidth="5xl">{project.metadata.title}</Heading>
+          <Heading mb="8" mx="auto" lineHeight={1.2} px="2rem" maxWidth="5xl">
+            {project.metadata.title}
+          </Heading>
           {video && (
             <video className={styles.video} autoPlay loop muted preload="none">
               <source src={`${config.basePath}/${video}`} type="video/mp4" />

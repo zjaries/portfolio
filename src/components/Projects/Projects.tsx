@@ -14,43 +14,35 @@ import styles from "./Projects.module.css";
 import { useState } from "react";
 import clsx from "clsx";
 import Button from "../Button/Button";
-import config from "@/config";
 
-const projects = [
-  {
-    title: "Wreno Credentialing API",
-    slug: "credentialing-api",
-    image: `${config.basePath}/images/projects/credentialing-api-thumbnail.png`,
-    description:
-      "An AI-powered document processing platform that automatically classifies, extracts, and verifies compliance documents like W9s, COIs, and trade licenses. It uses a flexible processing pipeline that sends data through webhooks in real time and supports plugging in any AI model for document parsing and verification.",
-    stack: "TypeScript, Node.js, Hono, React, PostgreSQL, GCP",
-  },
-  // {
-  //   title: "Wreno Vendor Management Platform",
-  //   slug: "vendor-management",
-  //   image: `${config.basePath}/images/projects/vendor-management-thumbnail.png`,
-  //   description:
-  //     "A full-featured platform for managing vendor compliance at scale, enabling companies to track credential status, set custom requirements, and automate document workflows. The system streamlines onboarding and reduces compliance risk by surfacing real-time status, auditability, and AI-driven verification across vendors and projects.",
-  //   stack: "TypeScript, Node.js, Express, React, NextJS, PostgreSQL, GCP",
-  // },
-  // {
-  //   title: "Creative Studio",
-  //   slug: "creative-studio",
-  //   image: "https://picsum.photos/1200/300",
-  //   description: "Internal web platform for animated ad creation at scale.",
-  // },
-  // {
-  //   title: "Vendor Compliance Engine",
-  //   slug: "vendor-compliance",
-  //   image: "https://picsum.photos/1200/300",
-  //   description:
-  //     "Streamlines trade partner compliance with automated workflows.",
-  // },
-];
+export interface Article {
+  slug: string;
+  title: string;
+  image: string;
+  description: string;
+  stack?: { title: "Node.js" }[];
+}
 
-export function Projects() {
+interface ProjectsProps {
+  projects: Article[];
+}
+
+export function Projects(props: ProjectsProps) {
+  const { projects = [] } = props;
+
+  if (projects.length === 0) {
+    return null;
+  }
+
   return (
-    <Box as="section" id="projects" py={{ base: 0, md: 24}} px={6} maxW="4xl" mx="auto">
+    <Box
+      as="section"
+      id="projects"
+      py={{ base: 0, md: 24 }}
+      px={6}
+      maxW="4xl"
+      mx="auto"
+    >
       <Heading size="5xl" mb={10}>
         Projects
       </Heading>
@@ -61,7 +53,7 @@ export function Projects() {
             index={idx}
             slug={project.slug}
             title={project.title}
-            imageUrl={project.image}
+            image={project.image}
             description={project.description}
             stack={project.stack}
           />
@@ -71,16 +63,12 @@ export function Projects() {
   );
 }
 
-interface ArticleProps {
+interface ArticleProps extends Article {
   index: number;
-  slug: string;
-  title: string;
-  imageUrl: string;
-  description: string;
-  stack?: string;
 }
+
 function Article(props: ArticleProps) {
-  const { index, slug, title, imageUrl, description, stack } = props;
+  const { index, slug, title, image, description, stack } = props;
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -104,7 +92,7 @@ function Article(props: ArticleProps) {
           pos="relative"
         >
           <Image
-            src={imageUrl}
+            src={image}
             alt={title}
             objectFit="cover"
             objectPosition="top"
@@ -138,7 +126,7 @@ function Article(props: ArticleProps) {
                     color="gray.300"
                     mb={4}
                   >
-                    {stack}
+                    {stack.map((item) => item.title).join(", ")}
                   </Text>
                 </>
               )}

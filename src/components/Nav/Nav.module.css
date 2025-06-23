@@ -4,6 +4,7 @@
   left: 1rem;
   filter: brightness(0) invert(1);
   width: 32px;
+  z-index: 2;
 }
 
 .menuButton {

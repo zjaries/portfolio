@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Box, Text, VStack } from "@chakra-ui/react";
-import styles from "./Nav.module.css";
-import IconMenu from "../Icons/IconMenu";
-import clsx from "clsx";
-import config from "@/config";
 import Image from "next/image";
 import Link from "next/link";
+import clsx from "clsx";
+import config from "@/config";
+import styles from "./Nav.module.css";
+import IconMenu from "../Icons/IconMenu";
 
 interface NavLink {
   href: string;
@@ -39,13 +39,12 @@ export function Nav({ links }: NavProps) {
         [styles.open]: isOpen,
       })}
     >
-      <Link href="/">
+      <Link href="/" className={styles.logo}>
         <Image
           src={`${config.basePath}/images/logo.png`}
           alt="Z"
           width={726}
           height={721}
-          className={styles.logo}
         />
       </Link>
       <button

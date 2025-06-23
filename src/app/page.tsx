@@ -7,6 +7,7 @@ import Carousel from "@/components/Carousel/Carousel";
 import { Nav } from "@/components/Nav/Nav";
 import IconCommandLine from "@/components/Icons/IconCommandLine";
 import { iconMap } from "@/utils/iconMap";
+import { getAllProjectsMetaData } from "@/content/projects/getProjects";
 
 const links = [
   {
@@ -68,7 +69,9 @@ const techStack = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getAllProjectsMetaData();
+
   const items = techStack.map((item) => ({
     title: item.title,
     icon: iconMap[item.title] || null,
@@ -84,7 +87,7 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <About />
-        <Projects />
+        <Projects projects={projects} />
         <Contact />
       </main>
       <footer className={styles.footer}></footer>
