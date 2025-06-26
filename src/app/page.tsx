@@ -88,9 +88,8 @@ export default async function Home() {
       <main className={styles.main}>
         <About />
         <Projects projects={projects} />
-        <Contact />
       </main>
-      <footer className={styles.footer}></footer>
+      <Contact />
     </div>
   );
 }
