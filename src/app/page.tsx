@@ -8,20 +8,21 @@ import { Nav } from "@/components/Nav/Nav";
 import IconCommandLine from "@/components/Icons/IconCommandLine";
 import { iconMap } from "@/utils/iconMap";
 import { getAllProjectsMetaData } from "@/content/projects/getProjects";
+import config from "@/config";
 
 const links = [
   {
-    href: "#about",
+    href: `${config.basePath}/#about`,
     title: "About Me",
     subtitle: "Full Stack Engineer",
   },
   {
-    href: "#projects",
+    href: `${config.basePath}/#projects`,
     title: "Projects",
     icon: <IconCommandLine height={14} />,
   },
   {
-    href: "#contact",
+    href: `${config.basePath}/#contact`,
     title: "Contact",
   },
 ];

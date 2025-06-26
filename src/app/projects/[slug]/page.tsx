@@ -18,17 +18,17 @@ export async function generateStaticParams() {
 
 const links = [
   {
-    href: "/#about",
+    href: `${config.basePath}/#about`,
     title: "About Me",
     subtitle: "Full Stack Engineer",
   },
   {
-    href: "/#projects",
+    href: `${config.basePath}/#projects`,
     title: "Projects",
     icon: <IconCommandLine height={14} />,
   },
   {
-    href: "/#contact",
+    href: `${config.basePath}/#contact`,
     title: "Contact",
   },
 ];
