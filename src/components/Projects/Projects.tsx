@@ -19,6 +19,7 @@ export interface Article {
   slug: string;
   title: string;
   image: string;
+  thumbnail: string;
   description: string;
   stack?: { title: "Node.js" }[];
 }
@@ -54,6 +55,7 @@ export function Projects(props: ProjectsProps) {
             slug={project.slug}
             title={project.title}
             image={project.image}
+            thumbnail={project.thumbnail}
             description={project.description}
             stack={project.stack}
           />
@@ -68,7 +70,7 @@ interface ArticleProps extends Article {
 }
 
 function Article(props: ArticleProps) {
-  const { index, slug, title, image, description, stack } = props;
+  const { index, slug, title, thumbnail, description, stack } = props;
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -92,7 +94,7 @@ function Article(props: ArticleProps) {
           pos="relative"
         >
           <Image
-            src={image}
+            src={thumbnail}
             alt={title}
             objectFit="cover"
             objectPosition="top"

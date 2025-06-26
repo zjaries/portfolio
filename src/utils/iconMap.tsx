@@ -11,6 +11,7 @@ import IconJS from "@/components/Icons/IconJS";
 import IconTypeScript from "@/components/Icons/IconTypeScript";
 import IconOpenAI from "@/components/Icons/IconOpenAI";
 import IconHono from "@/components/Icons/IconHono";
+import IconGeoJSON from "@/components/Icons/IconGeoJSON";
 
 export const iconMap: Record<string, JSX.Element> = {
   React: <IconReact width={40} height={40} />,
@@ -25,4 +26,5 @@ export const iconMap: Record<string, JSX.Element> = {
   GitHub: <IconGitHub width={40} height={40} />,
   OpenAI: <IconOpenAI width={40} height={40} />,
   Hono: <IconHono width={40} height={40} />,
+  GeoJSON: <IconGeoJSON width={40} height={40} />,
 };

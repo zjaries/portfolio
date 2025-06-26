@@ -17,6 +17,7 @@ stack:
     href: "https://platform.openai.com/docs/overview"
 video: "videos/credentialing-api.mp4"
 image: "images/projects/credentialing-api-thumbnail.png"
+thumbnail: "images/projects/credentialing-api-thumbnail.png"
 description: "An AI-powered document processing platform that automatically classifies, extracts, and verifies compliance documents like W9s, COIs, and trade licenses. It uses a flexible processing pipeline that sends data through webhooks in real time and supports plugging in any AI model for document parsing and verification."
 ---
 
