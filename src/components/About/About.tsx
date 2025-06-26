@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./About.module.css";
 import IconArrowDownRight from "../Icons/IconArrowDownRight";
 import Button from "../Button/Button";
+import IconGitHub from "../Icons/IconGithub";
 
 export function About() {
   return (
@@ -29,7 +30,50 @@ export function About() {
         />
       </Heading>
 
-      <Stack gap={10} alignItems="flex-start" direction={{ base: "column", md: "row" }} >
+      <Box
+        display="flex"
+        flexDir="column"
+        alignItems="center"
+        justifyContent="center"
+        my="0 2rem"
+        mx="auto"
+        padding={{ base: "5px", md: "1rem", lg: "2rem" }}
+        borderRadius="1rem"
+        maxW="720px"
+        background="#0e121c"
+      >
+        <Box>
+          <a
+            href="https://github.com/zjaries"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              fontWeight: 500,
+              fontSize: "0.75rem",
+              textDecoration: "none",
+              marginBottom: "1rem",
+            }}
+          >
+            <IconGitHub width={16} height={16} />
+            github.com/zjaries
+          </a>
+        </Box>
+        <Image
+          src="https://ghchart.rshah.org/050a15/zjaries"
+          alt="GitHub Contributions Chart"
+          priority
+          width={720}
+          height={180}
+        />
+      </Box>
+      <Stack
+        gap={10}
+        alignItems="flex-start"
+        direction={{ base: "column", md: "row" }}
+      >
         <Image
           src={`${config.basePath}/about-me-01.png`}
           alt="Zach Aries"
